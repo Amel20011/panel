@@ -1,0 +1,202 @@
+/* --- CSS VARIABLES (Blackpink Color Palette) --- */
+:root {
+    --bp-pink: #ff007f; /* Vibrant Pink */
+    --bp-magenta: #d30074;
+    --bp-dark: #000000; /* Hitam Pekat */
+    
+    /* Glassmorphism Styles */
+    --glass-bg: rgba(255, 255, 255, 0.05); /* Very light, subtle transparency */
+    --card-bg: rgba(0, 0, 0, 0.2); /* Base card background */
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-light: #ffffff;
+    --font-main: 'Poppins', sans-serif;
+}
+
+/* --- BASE STYLES & FONT --- */
+body {
+    font-family: var(--font-main);
+    background-color: var(--bp-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative; 
+}
+
+/* --- LIQUID / TERBANG BACKGROUND ANIMATION --- */
+body::before, body::after {
+    content: '';
+    position: fixed;
+    z-index: -1;
+    filter: blur(180px); 
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: liquidMove 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body::before {
+    background-color: var(--bp-pink);
+    width: 450px; height: 450px; top: -20%; left: -15%;
+}
+body::after {
+    background-color: var(--bp-magenta);
+    width: 600px; height: 600px; bottom: -25%; right: -20%;
+    animation-duration: 25s;
+}
+
+/* Keyframes untuk gerakan "Terbang" */
+@keyframes liquidMove {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    50% { transform: translate(100px, -100px) rotate(15deg) scale(1.05); }
+    100% { transform: translate(-150px, 50px) rotate(-10deg) scale(1); }
+}
+
+/* --- NAVBAR & HERO --- */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand { font-weight: 700; color: var(--text-light) !important; font-size: 1.5rem; }
+.navbar-brand span { color: var(--bp-pink); }
+
+.hero-section {
+    padding: 150px 0 80px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.hero-title {
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--text-light);
+    text-shadow: 0 0 15px rgba(255, 0, 127, 0.5); /* Neon pink glow */
+}
+
+/* --- PRODUCT CARDS (LIQUID GLASS) --- */
+.product-card {
+    background: var(--glass-bg); /* Transparansi rendah */
+    backdrop-filter: blur(10px); /* Efek Kaca Buram */
+    border: 1px solid var(--glass-border);
+    border-radius: 25px; /* Lebih membulat */
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transisi Animasi Halus */
+    position: relative;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Kembali ke tata letak tengah */
+}
+
+.product-card:hover {
+    transform: scale(1.03) translateY(-5px); 
+    box-shadow: 0 15px 35px rgba(255, 0, 127, 0.4); /* Glow Pink saat hover */
+    border-color: var(--bp-pink);
+}
+
+.ram-badge { font-size: 1.8rem; font-weight: 700; color: var(--bp-pink); }
+.price-tag { font-size: 1.5rem; color: var(--bp-pink); font-weight: 600; margin: 10px 0; }
+.price-tag small { font-size: 0.8rem; color: #aaa; font-weight: 400; }
+
+.feature-list { list-style: none; padding: 0; text-align: left; }
+.feature-list li { margin-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 8px; }
+.feature-list i { color: #00d26a; margin-right: 10px; }
+
+.btn-buy {
+    background: linear-gradient(90deg, var(--bp-magenta), var(--bp-pink));
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-buy:hover {
+    opacity: 0.9;
+    transform: scale(0.98);
+    box-shadow: 0 0 20px var(--bp-pink);
+}
+
+/* --- BLINKING/PULSATING EFFECT (BLAKCLIJK) --- */
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 5px var(--bp-pink); }
+    50% { box-shadow: 0 0 25px var(--bp-pink), 0 0 10px var(--bp-magenta); }
+    100% { box-shadow: 0 0 5px var(--bp-pink); }
+}
+
+.card-unlimited {
+    border: 2px solid var(--bp-pink);
+    background: rgba(255, 0, 127, 0.1); /* Slightly pinker glass */
+    animation: pulseGlow 2s infinite alternate; 
+}
+
+.card-unlimited:hover { animation: none; }
+
+/* --- FITUR UNGGULAN KAMI SECTION (Blackpink Style) --- */
+.badge-header {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    padding: 5px 15px;
+    border-radius: 20px;
+    background: rgba(255, 0, 127, 0.3); /* Pink */
+    border: 1px solid var(--bp-pink);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.section-title { font-weight: 700; margin-top: 15px; font-size: 2rem; }
+
+.feature-card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    background: rgba(255, 0, 127, 0.1);
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255, 0, 127, 0.2); /* Pinker background for icon */
+    color: var(--bp-pink);
+    margin-bottom: 15px;
+}
+
+/* --- FLOATING BUTTONS --- */
+.float-wa, .float-scroll-top {
+    position: fixed;
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    text-align: center; line-height: 50px;
+    font-size: 1.2rem;
+    z-index: 999;
+    transition: all 0.3s;
+    cursor: pointer; border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.float-wa {
+    bottom: 20px; right: 20px;
+    background-color: #25D366; /* WhatsApp Green */
+    color: white;
+}
+
+.float-scroll-top {
+    bottom: 80px; right: 20px;
+    background-color: var(--bp-pink); /* Pink */
+    color: white;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 30px; margin-top: 50px;
+    color: #777; font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
