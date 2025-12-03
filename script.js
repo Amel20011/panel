@@ -1,6 +1,6 @@
 // --- KONFIGURASI PENTING ---
 // Ganti dengan nomor WhatsApp Anda (format: 628xxx)
-const nomerWA = "6281234567890"; 
+const nomerWA = "13658700681"; 
 // Ganti harga paket Unlimited (dalam Rupiah)
 const unlimitedPrice = 15000; 
 const defaultCpu = "30% CPU"; 
